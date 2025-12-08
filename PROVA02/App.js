@@ -1,20 +1,19 @@
-  import React from 'react';
-  import { NavigationContainer } from '@react-navigation/native';
-  import { createNativeStackNavigator } from '@react-navigation/native-stack';
-  import HomeScreen from './screens/HomeScreen';
-  import CompromissosUsuario from './screens/CompromissosUsuario';
-  import CompromissosEquipe from './screens/CompromissosEquipe';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/HomeScreen';
+import UsuarioScreen from './screens/CompromissosUsuario';
+import EquipeScreen from './screens/CompromissosEquipe';
 
-  const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
-  export default function App() {
-    return (
+export default function App() {
+  return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen name="Início" component={HomeScreen} />
-      <Stack.Screen name="Meus compromissos" component={CompromissosUsuario} />
-      <Stack.Screen name="Compromissos da equipe" component={CompromissosEquipe} />
+        <Stack.Screen name="Início" component={HomeScreen} />
+        <Stack.Screen name="Meus compromissos" component={UsuarioScreen} />
+        <Stack.Screen name="Compromissos da equipe" component={EquipeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-  };
+}

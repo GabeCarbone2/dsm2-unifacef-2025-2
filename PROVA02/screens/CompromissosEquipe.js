@@ -1,49 +1,62 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, SectionList, StyleSheet } from 'react-native';
 
-export default function CompromissosEquipe(){
-    return(
-        <View style={styles.container}>
+const dados = [
+  {
+    title: '(Eu)',
+    data: [
+      '09:30 - Reunião Daily',
+      '14:00 - Reunião com cliente Carros & Carros',
+      '16:30 - Prazo final Projeto X'
+    ]
+  },
+  {
+    title: 'Jurema (chefe)',
+    data: [
+      '09:30 - Reunião Daily',
+      '12:00 - Almoço com a diretoria',
+      '15:00 - Saída vagem oficina'
+    ]
+  },
+  {
+    title: 'Aderbal',
+    data: [
+      '09:30 - Reunião Daily',
+      '14:30 - Visita técnica Uni-FACEF',
+      '16:30 - Prazo final Projeto X'
+    ]
+  }
+];
 
-           <Text style={styles.info}>Gabriel Rodrigues Carbone</Text>
-            <Text style={styles.info}>Sistemas de Informação</Text>
-
-            <Text style={styles.section}>Gabriel</Text>
-            <Text style={styles.item}>09h30: Reunião "Daily"</Text>
-            <Text style={styles.item}>14h00: Reunião com o cliente Carros & Carros</Text>
-            <Text style={styles.item}>16h30: Prazo final Projeto X</Text>
-
-            <Text style={styles.section}>Jurema (chefe)</Text>
-            <Text style={styles.item}>09h30 Reunião "Dailly"</Text>
-            <Text style={styles.item}>12h00: Almoço com a Diretora</Text>
-            <Text style={styles.item}>15h00: Saída Viagem</Text>
-
-            <Text style={styles.section}> Aderbal</Text>
-            <Text style={styles.item}>09h30: Reunião "Dailly"</Text>
-            <Text style={styles.item}>16h30: Prazo Final Projeo X</Text>
-        </View>
-    )
+export default function EquipeScreen() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.subtitle}>Gabriel Rodrigues Carbone</Text>
+      <Text style={styles.subtitle}>Sistemas de Informação</Text>
+      <SectionList
+        sections={dados}
+        keyExtractor={(item, index) => item + index}
+        renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
+        renderSectionHeader={({ section }) => (
+          <Text style={styles.header}>{section.title}</Text>
+        )}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        justifyContent: 'center'
-    },
-    title: {
-        fontSize: 26,
-        fontWeight:'bold',
-        textAlign:'center',
-        marginBottom: 25
-    },
-    section: {
-        marginTop:20,
-        fontSize:20,
-        fontWeight:'bold'
-    },
-    item: {
-    fontSize: 16,
-    marginTop: 8
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  header: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 20,
+    marginBottom: 8,
+  },
+  item: {
+    fontSize: 15,
+    marginBottom: 8,
   }
-})
+});

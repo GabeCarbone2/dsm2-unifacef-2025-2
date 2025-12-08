@@ -1,52 +1,50 @@
-import { View, Text, Button, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-export default function HomeScreen({ navigation }){
-    return(
-        <View style={StyleSheet.container}>
-            <Text style={styles.container}></Text>
-            <Text style={styles.title}>Agenda do Dia</Text>
-            <Text style={styles.subtile}>Gabriel Rodrigues Carbone</Text>
-            <Text style={styles.subtile}>Sistemas de informação</Text>
+export default function HomeScreen({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Agenda do Dia</Text>
+      <Text style={styles.subtitle}>Gabriel Rodrigues Carbone</Text>
+      <Text style={styles.subtitle}>Sistemas de Informação</Text>
 
-            <View style={styles.buttons}>
-                <Button title="Meus compromissos" onPress={() => navigation.navigate('Meus compromissos')} />
-                <Button title="Compromisos da Equipe" onPress={() => navigation.navigate('Compromissos da equipe')} />
-            </View>
-        </View>
-    )
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Meus compromissos')}>
+        <Text style={styles.buttonText}>Meus compromissos</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Compromissos da equipe')}>
+        <Text style={styles.buttonText}>Compromissos da equipe</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    padding: 20
+    alignItems: 'center',
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 24,
     marginBottom: 10,
-    textAlign: 'center'
+    fontWeight: 'bold',
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: 14,
     marginBottom: 40,
-    textAlign: 'center'
-  },
-  buttonsContainer: {
-    width: '75%',
-    gap: 15
   },
   button: {
-    backgroundColor: '#d3d3d3',
-    paddingVertical: 12,
-    borderRadius: 10,
+    width: 200,
+    backgroundColor: '#CFCFCF',
+    padding: 12,
+    borderRadius: 6,
+    marginVertical: 10,
     alignItems: 'center',
   },
   buttonText: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#000'
+    fontWeight: '500',
+    color: '#000',
   }
 });
